@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const Accounts = require('./Accounts/Accounts')
 
 const app = express();
 app.use(cors());
@@ -69,6 +70,13 @@ app.post('/api/reset-password', function(req, res) {
         "error": "Server error! Please try again ..."
       })
     }
+  }, 5000)
+})
+
+app.get('/api/accounts', function(req, res) {
+  console.log(req.header('Authorization'))
+  setTimeout(() => {
+    res.status(200).json(Accounts.getAllAccounts())
   }, 5000)
 })
 

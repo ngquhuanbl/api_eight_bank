@@ -16,6 +16,6 @@ Closed endpoints require a valid Token to be included in the header of the
 request. A Token can be acquired from the Login view above.
 
 
-
+* [Get all accounts of a customer](Cards/getAllAccounts.md): `GET /api/accounts`
 
 
