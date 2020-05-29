@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const Accounts = require('./Accounts/Accounts')
+const Receivers = require('./Receivers/Receivers')
+const Banks = require('./Banks/Banks')
 
 const app = express();
 app.use(cors());
@@ -80,7 +82,64 @@ app.get('/api/accounts', function(req, res) {
   }, 5000)
 })
 
+app.get('/api/receivers', function(req, res) {
+  console.log(req.header('Authorization'))
+  setTimeout(() => {
+    res.status(200).json(Receivers.getAllReceivers())
+  }, 5000)
+})
 
+app.get('/api/banks', function(req, res) {
+  console.log(req.header('Authorization'))
+  setTimeout(() => {
+    res.status(200).json(Banks.getAllBanks())
+  }, 5000)
+})
+
+app.post('/api/banks/validate', function(req, res) {
+  console.log(req.header('Authorization'))
+  setTimeout(() => {
+    const bankID = req.body.bankID;
+    const accountID = req.body.accountID;
+    res.status(200).json(Banks.validateAccount(bankID, accountID))
+  }, 5000)
+})
+
+app.post('/api/receivers/create', function(req, res) {
+  console.log(req.header('Authorization'))
+  setTimeout(() => {
+    const bankID = req.body.bankID;
+    const accountID = req.body.accountID;
+    const nickname = req.body.nickname;
+    console.log(bankID, accountID, nickname)
+    if (accountID === '1234123412341234') {
+      res.status(200).json({})
+    } else {
+      res.status(500).json({
+        "error": "Server error"
+      })
+    }
+  }, 5000)
+})
+
+app.post('/api/receivers/edit', function(req, res) {
+  console.log(req.header('Authorization'))
+  setTimeout(() => {
+    const id = req.body.id;
+    const nickname = req.body.name;
+    console.log(id, nickname)
+    res.status(200).json({})
+  }, 5000)
+})
+
+app.delete('/api/receivers/remove', function(req, res) {
+  console.log(req.header('Authorization'))
+  setTimeout(() => {
+    const id = req.body.id;
+    console.log(id)
+    res.status(200).json({})
+  }, 5000)
+})
 
 const PORT = process.env.PORT || 3002;
 app.listen(PORT, function () {

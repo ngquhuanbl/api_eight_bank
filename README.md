@@ -15,7 +15,14 @@ Open endpoints require no Authentication.
 Closed endpoints require a valid Token to be included in the header of the
 request. A Token can be acquired from the Login view above.
 
+### Account
 
-* [Get all accounts of a customer](Cards/getAllAccounts.md): `GET /api/accounts`
+* [Get all accounts of a customer](Accounts/getAllAccounts.md): `GET /api/accounts`
+* [Get all receivers of a customer](Receivers/getAllReceivers.md): `GET /api/receivers`
+* [Get all associated banks](Banks/getAllBanks.md) `GET /api/banks`
+* [Validate account id](Banks/validateAccountID.md) `POST /api/banks/validate`
+* [Create new receiver](Receivers/createNewReceiver.md) `POST /api/receivers/create`
+* [Edit a receiver](Receivers/editReceiver.md) `POST /api/receivers/edit`
+* [Delete a receiver](Receivers/removeReceiver.md) `DELETE /api/receivers/remove`
 
 
