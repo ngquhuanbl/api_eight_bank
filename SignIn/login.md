@@ -12,9 +12,9 @@ Used to collect a Token for a registered User.
 
 ```json
 {
-    "email": "[valid email address]",
-    "password": "[password in plain text]",
-    "reCaptchaKey": "[reCaptcha key in plain text]",
+  "email": "[valid email address]",
+  "password": "[password in plain text]",
+  "reCaptchaKey": "[reCaptcha key in plain text]",
 }
 ```
 
@@ -22,9 +22,9 @@ Used to collect a Token for a registered User.
 
 ```json
 {
-    "email": "johndoe@gmail.com",
-    "password": "123456789",
-    "reCaptchaKey": "03AGdBq27Isbn2T9Quh0wvDKevUsGMWsyQQQphPB5iF1wMwWIFn6slZMO",
+  "email": "johndoe@gmail.com",
+  "password": "123456789",
+  "reCaptchaKey": "03AGdBq27Isbn2T9Quh0wvDKevUsGMWsyQQQphPB5iF1wMwWIFn6slZMO",
 }
 ```
 
@@ -36,7 +36,8 @@ Used to collect a Token for a registered User.
 
 ```json
 {
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+  "name": "Joaquin Phoenix",
 }
 ```
 

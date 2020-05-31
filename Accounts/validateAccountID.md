@@ -14,8 +14,8 @@ Used to check whether a account id of a bank is valid
 
 ```json
 {
-    "bankID": "[bank id in plain text]",
-    "accountID": "[account id in plain text]",
+  "bankID": "[bank id in plain text]",
+  "accountID": "[account id in plain text]",
 }
 ```
 
@@ -23,8 +23,8 @@ Used to check whether a account id of a bank is valid
 
 ```json
 {
-    "bankID": "5ed0d40504cce42690000002",
-    "accountID": "0987098709870987",
+  "bankID": "5ed0d40504cce42690000002",
+  "accountID": "0987098709870987",
 }
 ```
 

@@ -1,4 +1,4 @@
-# Get all associated banks
+# Get all associated banks (included EIGHT.Bank)
 
 Get the list of all associated banks
 
@@ -19,6 +19,10 @@ Get the list of all associated banks
 ```json
 {
   "data": [
+    {
+      "id": "5ed0d40504cce42690000323",
+      "name": "EIGHT.Bank"
+    },
     {
       "id": "5ed0d40504cce42690000002",
       "name": "ACB"

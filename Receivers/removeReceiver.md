@@ -2,29 +2,15 @@
 
 Used to delete a receiver of an account
 
-**URL** : `/api/receivers/remove`
+**URL** : `/api/receivers/remove?id={receiver_id}`
+
+**URL Parameters** : `id=[string]` where `id` is the ID of the receiver that is about to be delete.
 
 **Method** : `DELETE`
 
 **Auth required** : YES
 
 **Permissions required** : YES
-
-**Data constraints**
-
-```json
-{
-    "id": "[receiver's id in plain text]",
-}
-```
-
-**Data example**
-
-```json
-{
-    "id": "0987098709870987",
-}
-```
 
 ## Success Response
 

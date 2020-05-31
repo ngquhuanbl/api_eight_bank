@@ -4,6 +4,10 @@ const utils = require('../utils');
 const mongoid = require('mongoid-js');
 const bank = [
   {
+    id: "5ed0d40504cce42690000001",
+    name: "EIGHT.Bank"
+  },
+  {
     id: "5ed0d40504cce42690000002",
     name: "ACB"
   },
@@ -47,6 +51,17 @@ module.exports = {
     }
     return {
       "valid": false,
+    }
+  },
+  getAccountInfo: function(accountID, bankID) {
+    return {
+      "valid": true,
+      "data": {
+        "accountName": faker.name.findName(),
+        "accountID": accountID,
+        "bankID": bankID,
+        "bankName": bank.find((e) => e.id === bankID).name,
+      }
     }
   }
 }

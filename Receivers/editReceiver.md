@@ -14,8 +14,8 @@ Used to edit the information belongs to a receiver of an account
 
 ```json
 {
-    "id": "[receiver's id in plain text]",
-    "nickname": "[receiver's new nickname in plain text]",
+  "id": "[receiver's id in plain text]",
+  "nickname": "[receiver's new nickname in plain text]",
 }
 ```
 
@@ -23,8 +23,8 @@ Used to edit the information belongs to a receiver of an account
 
 ```json
 {
-    "id": "0987098709870987",
-    "nickname": "Ross The Friends Character"
+  "id": "0987098709870987",
+  "nickname": "Ross The Friends Character"
 }
 ```
 

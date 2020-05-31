@@ -4,6 +4,10 @@ const utils = require('../utils');
 const mongoid = require('mongoid-js');
 const bank = [
   {
+    id: "5ed0d40504cce42690000001",
+    name: "EIGHT.Bank"
+  },
+  {
     id: "5ed0d40504cce42690000002",
     name: "ACB"
   },

@@ -12,8 +12,8 @@ Used to collect a Token for a registered User.
 
 ```json
 {
-    "password": "[password in plain text]",
-    "token": "[token in plain text]",
+  "password": "[password in plain text]",
+  "token": "[token in plain text]",
 }
 ```
 
@@ -21,8 +21,8 @@ Used to collect a Token for a registered User.
 
 ```json
 {
-    "password": "123456789",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+  "password": "123456789",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
 }
 ```
 

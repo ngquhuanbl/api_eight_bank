@@ -14,9 +14,9 @@ Used to create new receiver for an account
 
 ```json
 {
-    "bankID": "[receiver's bank id in plain text]",
-    "accountID": "[receiver's account id in plain text]",
-    "nickname": "[receiver's nickname in plain text]",
+  "bankID": "[receiver's bank id in plain text]",
+  "accountID": "[receiver's account id in plain text]",
+  "nickname": "[receiver's nickname in plain text]",
 }
 ```
 
@@ -24,9 +24,9 @@ Used to create new receiver for an account
 
 ```json
 {
-    "bankID": "5ed0d40504cce42690000002",
-    "accountID": "0987098709870987",
-    "nickname": "Ross The Friends Character"
+  "bankID": "5ed0d40504cce42690000002",
+  "accountID": "0987098709870987",
+  "nickname": "Ross The Friends Character"
 }
 ```
 
