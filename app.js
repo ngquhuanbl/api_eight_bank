@@ -4,6 +4,7 @@ const faker = require('faker')
 const Accounts = require('./Accounts/Accounts')
 const Receivers = require('./Receivers/Receivers')
 const Banks = require('./Banks/Banks')
+const Debts = require('./Debts/Debts')
 
 const app = express();
 app.use(cors());
@@ -12,7 +13,7 @@ app.use(express.urlencoded({
     extended: true
 }));
 
-// Sign in
+// Open endpoints
 app.post('/api/login', function (req, res) {
   const email = req.body.email;
   const password = req.body.password;
@@ -77,6 +78,29 @@ app.post('/api/reset-password', function(req, res) {
   }, 5000)
 })
 
+app.post('/api/otp/send', function(req, res) {
+  setTimeout(() => {
+    const email = req.body.email;
+    console.log(email)
+    res.status(200).json({})
+  }, 5000)
+})
+
+app.post('/api/otp/validate', function(req, res) {
+  setTimeout(() =>  {
+    const email = req.body.email;
+    const otp = req.body.otp;
+    console.log(email, otp)
+    res.status(200).json({
+      "valid": true
+    })
+  }, 5000)
+})
+
+// Endpoints that require Authentication
+
+// Accounts
+
 app.get('/api/accounts', function(req, res) {
   console.log(req.header('Authorization'))
   setTimeout(() => {
@@ -84,26 +108,12 @@ app.get('/api/accounts', function(req, res) {
   }, 5000)
 })
 
+// Receivers
+
 app.get('/api/receivers', function(req, res) {
   console.log(req.header('Authorization'))
   setTimeout(() => {
     res.status(200).json(Receivers.getAllReceivers())
-  }, 5000)
-})
-
-app.get('/api/banks', function(req, res) {
-  console.log(req.header('Authorization'))
-  setTimeout(() => {
-    res.status(200).json(Banks.getAllBanks())
-  }, 5000)
-})
-
-app.post('/api/banks/validate', function(req, res) {
-  console.log(req.header('Authorization'))
-  setTimeout(() => {
-    const bankID = req.body.bankID;
-    const accountID = req.body.accountID;
-    res.status(200).json(Banks.validateAccount(bankID, accountID))
   }, 5000)
 })
 
@@ -143,6 +153,24 @@ app.delete('/api/receivers/remove', function(req, res) {
   }, 5000)
 })
 
+// Banks
+
+app.get('/api/banks', function(req, res) {
+  console.log(req.header('Authorization'))
+  setTimeout(() => {
+    res.status(200).json(Banks.getAllBanks())
+  }, 5000)
+})
+
+app.post('/api/banks/validate', function(req, res) {
+  console.log(req.header('Authorization'))
+  setTimeout(() => {
+    const bankID = req.body.bankID;
+    const accountID = req.body.accountID;
+    res.status(200).json(Banks.validateAccount(bankID, accountID))
+  }, 5000)
+})
+
 app.get('/api/banks/account', function(req, res) {
   console.log(req.header('Authorization'))
   setTimeout(() => {
@@ -153,24 +181,7 @@ app.get('/api/banks/account', function(req, res) {
   }, 5000)
 })
 
-app.post('/api/otp/send', function(req, res) {
-  setTimeout(() => {
-    const email = req.body.email;
-    console.log(email)
-    res.status(200).json({})
-  }, 5000)
-})
-
-app.post('/api/otp/validate', function(req, res) {
-  setTimeout(() =>  {
-    const email = req.body.email;
-    const otp = req.body.otp;
-    console.log(email, otp)
-    res.status(200).json({
-      "valid": true
-    })
-  }, 5000)
-})
+// Transfer
 
 app.post('/api/transfer', function(req, res) {
   setTimeout(() => {
@@ -196,6 +207,50 @@ app.post('/api/transfer', function(req, res) {
     //   "error": "Server error! Please try again later ..."
     // })
 
+  }, 5000)
+})
+
+// Debts
+
+app.get('/api/debts/created-by-you', function(req,res) {
+  console.log(req.header('Authorization'))
+  setTimeout(() => {
+    res.status(200).json(Debts.getCreatedByYou())
+  }, 5000)
+})
+
+app.get('/api/debts/received-from-others', function(req,res) {
+  console.log(req.header('Authorization'))
+  setTimeout(() => {
+    res.status(200).json(Debts.getReceivedFromOthers())
+  }, 5000)
+})
+
+app.post('/api/debts/remove', function(req, res) {
+  console.log(req.header('Authorization'))
+  setTimeout(() => {
+    console.log('Debt ID: ',req.body.id)
+    console.log('Reason of cancellation: ',req.body.reasonOfCancel)
+    res.status(200).json({})
+  }, 5000)
+})
+
+app.post('/api/debts/repay', function(req, res) {
+  console.log(req.header('Authorization'))
+  setTimeout(() => {
+    console.log('Account ID: ',req.body.accountID)
+    console.log('Debt ID: ',req.body.debtID)
+    res.status(200).json({})
+  }, 5000)
+})
+
+app.post('/api/debts/create', function(req, res) {
+  console.log(req.header('Authorization'))
+  setTimeout(() => {
+    console.log('Borrower ID: ',req.body.borrowerID)
+    console.log('Debt amount: ',req.body.amount)
+    console.log('Debt message: ',req.body.message)
+    res.status(200).json({})
   }, 5000)
 })
 

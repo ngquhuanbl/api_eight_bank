@@ -19,18 +19,25 @@ request. A Token can be acquired from the Login view above.
 ### Accounts
 * [Get all accounts of a customer](Accounts/getAllAccounts.md): `GET /api/accounts`
 
-### Receiver
+### Receivers
 * [Get all receivers of a customer](Receivers/getAllReceivers.md): `GET /api/receivers`
 * [Create new receiver](Receivers/createNewReceiver.md) `POST /api/receivers/create`
 * [Edit a receiver](Receivers/editReceiver.md) `POST /api/receivers/edit`
 * [Delete a receiver](Receivers/removeReceiver.md) `DELETE /api/receivers/remove`
 
-### Bank
+### Banks
 * [Get all associated banks](Banks/getAllBanks.md) `GET /api/banks`
 * [Get an account information of a bank](Banks/getAccountInfo.md) `GET /api/banks/account`
 * [Validate account id of a bank](Banks/validateAccountID.md) `POST /api/banks/validate`
 
 ### Transfer
 * [Make a money transfer](Transfer/transfer.md) `POST /api/transfer`
+
+### Debts
+* [Get list of debts that the customer created](Debts/createdByYou.md) `GET /api/debts/created-by-you`
+* [Get list of debts that the customer was received from others](Debts/receivedFromOthers.md) `GET /api/debts/received-from-others`
+* [Add a debt](Debts/add.md) `POST /api/debts/create`
+* [Repay a debt](Debts/repay.md) `POST /api/debts/repay`
+* [Remove a debt](Debts/remove.md) `POST /api/debts/remove`
 
 
