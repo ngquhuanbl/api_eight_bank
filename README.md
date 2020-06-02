@@ -31,13 +31,19 @@ request. A Token can be acquired from the Login view above.
 * [Validate account id of a bank](Banks/validateAccountID.md) `POST /api/banks/validate`
 
 ### Transfer
-* [Make a money transfer](Transfer/transfer.md) `POST /api/transfer`
+* [Make a money transfer](Transfer/new-transfer.md) `POST /api/transfer`
 
 ### Debts
 * [Get list of debts that the customer created](Debts/createdByYou.md) `GET /api/debts/created-by-you`
 * [Get list of debts that the customer was received from others](Debts/receivedFromOthers.md) `GET /api/debts/received-from-others`
 * [Add a debt](Debts/add.md) `POST /api/debts/create`
-* [Repay a debt](Debts/repay.md) `POST /api/debts/repay`
+* [Repay a debt](Debts/new-repay.md) `POST /api/debts/repay`
 * [Remove a debt](Debts/remove.md) `POST /api/debts/remove`
+
+### History
+* [Get money receive transaction history of the customer](History/receive.md) `GET /api/history/receive`
+* [Get money transfer transaction history of the customer](History/transfer.md) `GET /api/history/transfer`
+* [Get debt repaying transaction history of the customer](History/debt-repay.md) `GET /api/history/debt-repay`
+
 
 

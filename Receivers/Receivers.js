@@ -2,34 +2,8 @@ const randomstring = require('randomstring');
 const faker = require('faker');
 const utils = require('../utils');
 const mongoid = require('mongoid-js');
-const bank = [
-  {
-    id: "5ed0d40504cce42690000001",
-    name: "EIGHT.Bank"
-  },
-  {
-    id: "5ed0d40504cce42690000002",
-    name: "ACB"
-  },
-  {
-    id: "5ed0d40504cce42690000003",
-    name: "Agribank"
-  },
-  {
-    id: "5ed0d40504cce42690000004",
-    name: "BIDV"
-  },
-  {
-    id: "5ed0d40504cce42690000005",
-    name: "TechcomBank"
-  },
-  {
-    id: "5ed0d40504cce42690000006",
-    name: "VPBank"
-  }
-]
 module.exports = {
-  getAllReceivers: function() {
+  getAllReceivers: function(bank) {
     const res = []
     const n = utils.randomIntegerBetween(5,15);
     for (let i = 0; i < n; i += 1) {

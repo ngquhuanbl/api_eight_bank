@@ -5,6 +5,8 @@ const Accounts = require('./Accounts/Accounts')
 const Receivers = require('./Receivers/Receivers')
 const Banks = require('./Banks/Banks')
 const Debts = require('./Debts/Debts')
+const History = require('./History/History')
+const randomstring = require('randomstring');
 
 const app = express();
 app.use(cors());
@@ -12,6 +14,36 @@ app.use(express.json());
 app.use(express.urlencoded({
     extended: true
 }));
+
+const yourName = 'John Doe'
+const yourDefaultAccountID = '8709691361472690'
+
+const bank = [
+  {
+    id: "5ed0d40504cce42690000001",
+    name: "EIGHT.Bank"
+  },
+  {
+    id: "5ed0d40504cce42690000002",
+    name: "ACB"
+  },
+  {
+    id: "5ed0d40504cce42690000003",
+    name: "Agribank"
+  },
+  {
+    id: "5ed0d40504cce42690000004",
+    name: "BIDV"
+  },
+  {
+    id: "5ed0d40504cce42690000005",
+    name: "TechcomBank"
+  },
+  {
+    id: "5ed0d40504cce42690000006",
+    name: "VPBank"
+  }
+]
 
 // Open endpoints
 app.post('/api/login', function (req, res) {
@@ -30,7 +62,9 @@ app.post('/api/login', function (req, res) {
     } else {
       res.status(200).json({
         "token": "93144b288eb1fdccbe46d6fc0f241a51766ecd3d",
-        "name": faker.name.findName(),
+        "name": yourDefaultAccountID,
+        "accountID": yourDefaultAccountID,
+        "bankID": bank[0].id,
       })
     }
   }, 5000)
@@ -104,7 +138,7 @@ app.post('/api/otp/validate', function(req, res) {
 app.get('/api/accounts', function(req, res) {
   console.log(req.header('Authorization'))
   setTimeout(() => {
-    res.status(200).json(Accounts.getAllAccounts())
+    res.status(200).json(Accounts.getAllAccounts(yourDefaultAccountID))
   }, 5000)
 })
 
@@ -113,7 +147,7 @@ app.get('/api/accounts', function(req, res) {
 app.get('/api/receivers', function(req, res) {
   console.log(req.header('Authorization'))
   setTimeout(() => {
-    res.status(200).json(Receivers.getAllReceivers())
+    res.status(200).json(Receivers.getAllReceivers(bank))
   }, 5000)
 })
 
@@ -124,13 +158,14 @@ app.post('/api/receivers/create', function(req, res) {
     const accountID = req.body.accountID;
     const nickname = req.body.nickname;
     console.log(bankID, accountID, nickname)
-    if (accountID === '1234123412341234') {
-      res.status(200).json({})
-    } else {
-      res.status(500).json({
-        "error": "Server error"
-      })
-    }
+    res.status(200).json({})
+    // if (accountID === '1234123412341234') {
+    //   res.status(200).json({})
+    // } else {
+    //   res.status(500).json({
+    //     "error": "Server error"
+    //   })
+    // }
   }, 5000)
 })
 
@@ -158,7 +193,7 @@ app.delete('/api/receivers/remove', function(req, res) {
 app.get('/api/banks', function(req, res) {
   console.log(req.header('Authorization'))
   setTimeout(() => {
-    res.status(200).json(Banks.getAllBanks())
+    res.status(200).json(Banks.getAllBanks(bank))
   }, 5000)
 })
 
@@ -177,7 +212,7 @@ app.get('/api/banks/account', function(req, res) {
     const accountID = req.query.accountID;
     const bankID = req.query.bankID;
     console.log(accountID, bankID)
-    res.status(200).json(Banks.getAccountInfo(accountID, bankID))
+    res.status(200).json(Banks.getAccountInfo(accountID, bankID, bank))
   }, 5000)
 })
 
@@ -186,13 +221,11 @@ app.get('/api/banks/account', function(req, res) {
 app.post('/api/transfer', function(req, res) {
   setTimeout(() => {
     console.log(req.header('Authorization'))
-    const senderAccountID = req.body.senderAccountID
     const receiverAccountID = req.body.receiverAccountID
     const receiverBankID = req.body.receiverBankID
     const amount = req.body.amount
     const detail = req.body.amount
     const chargedBySender = req.body.chargedBySender
-    console.log('senderAccountID: ',senderAccountID)
     console.log('receiverAccountID: ',receiverAccountID)
     console.log('receiverBankID: ',receiverBankID)
     console.log('amount :',amount)
@@ -215,14 +248,14 @@ app.post('/api/transfer', function(req, res) {
 app.get('/api/debts/created-by-you', function(req,res) {
   console.log(req.header('Authorization'))
   setTimeout(() => {
-    res.status(200).json(Debts.getCreatedByYou())
+    res.status(200).json(Debts.getCreatedByYou(yourDefaultAccountID, yourName))
   }, 5000)
 })
 
 app.get('/api/debts/received-from-others', function(req,res) {
   console.log(req.header('Authorization'))
   setTimeout(() => {
-    res.status(200).json(Debts.getReceivedFromOthers())
+    res.status(200).json(Debts.getReceivedFromOthers(yourDefaultAccountID, yourName))
   }, 5000)
 })
 
@@ -238,7 +271,7 @@ app.post('/api/debts/remove', function(req, res) {
 app.post('/api/debts/repay', function(req, res) {
   console.log(req.header('Authorization'))
   setTimeout(() => {
-    console.log('Account ID: ',req.body.accountID)
+    // console.log('Account ID: ',req.body.accountID)
     console.log('Debt ID: ',req.body.debtID)
     res.status(200).json({})
   }, 5000)
@@ -251,6 +284,27 @@ app.post('/api/debts/create', function(req, res) {
     console.log('Debt amount: ',req.body.amount)
     console.log('Debt message: ',req.body.message)
     res.status(200).json({})
+  }, 5000)
+})
+
+app.get('/api/history/receive', function(req, res) {
+  console.log(req.header('Authorization'))
+  setTimeout(() => {
+    res.status(200).json(History.getReceive())
+  }, 5000)
+})
+
+app.get('/api/history/transfer', function(req, res) {
+  console.log(req.header('Authorization'))
+  setTimeout(() => {
+    res.status(200).json(History.getTransfer())
+  }, 5000)
+})
+
+app.get('/api/history/debt-repay', function(req, res) {
+  console.log(req.header('Authorization'))
+  setTimeout(() => {
+    res.status(200).json(History.getDebtRepay(yourDefaultAccountID, yourName))
   }, 5000)
 })
 

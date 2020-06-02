@@ -5,11 +5,8 @@ const mongoid = require('mongoid-js');
 
 const status = ['UNPAID', 'PAID', 'CANCELLED']
 
-const yourID = randomstring.generate({ length: 16, charset: 'numeric'})
-const yourName = 'John Doe'
-
 module.exports = {
-  getCreatedByYou: function() {
+  getCreatedByYou: function(yourID, yourName) {
     const res = []
     const n = utils.randomIntegerBetween(10, 30)
     for (let i = 0; i < n; i += 1) {
@@ -32,7 +29,7 @@ module.exports = {
       "data": res,
     }
   },
-  getReceivedFromOthers: function() {
+  getReceivedFromOthers: function(yourID, yourName) {
     const res = []
     const n = utils.randomIntegerBetween(10, 30)
     for (let i = 0; i < n; i += 1) {
