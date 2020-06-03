@@ -301,10 +301,43 @@ app.get('/api/history/transfer', function(req, res) {
   }, 5000)
 })
 
-app.get('/api/history/debt-repay', function(req, res) {
+app.get('/api/history/debt-repaying', function(req, res) {
   console.log(req.header('Authorization'))
   setTimeout(() => {
     res.status(200).json(History.getDebtRepay(yourDefaultAccountID, yourName))
+  }, 5000)
+})
+
+app.get('/api/account', function(req, res) {
+  console.log(req.header('Authorization'))
+  setTimeout(() => {
+    res.status(200).json({
+      "data": {
+        "name": yourName,
+        "email": "email@gmail.com",
+        "phone": "0381373419"
+      }
+    })
+  }, 5000)
+})
+
+app.post('/api/account/change-password', function(req, res) {
+  console.log(req.header('Authorization'))
+  setTimeout(() => {
+    const currentPassword = req.body.currentPassword
+    if (currentPassword === '123456789') {
+      res.status(200).json({
+        "data": {
+          "name": yourName,
+          "email": "email@gmail.com",
+          "phone": "0381373419"
+        }
+      })
+    } else {
+      res.status(400).json({
+        "error": "Incorrect current password",
+      })
+    }
   }, 5000)
 })
 

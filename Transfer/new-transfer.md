@@ -40,6 +40,7 @@ Used to make a money transfer
 ```json
 {
   "success": true,
+  "balance": "500000"
 }
 ```
 

@@ -3,7 +3,7 @@ const faker = require('faker');
 const utils = require('../utils');
 const mongoid = require('mongoid-js');
 
-const status = ['UNPAID', 'PAID', 'CANCELLED']
+const status = ['SUCCESS', 'FAILED', 'REFUND']
 
 const bank = [
   {
@@ -72,10 +72,10 @@ module.exports = {
     for (let i = 0; i < n; i += 1) {
       const isLoan = Math.floor(Math.random() * 2)
       res.push({
-        "senderID": (isLoan ? yourID : randomstring.generate({ length: 16, charset: 'numeric'})),
-        "senderName": (isLoan ? yourName : faker.name.findName()),
-        "receiverID": (!isLoan ? yourID : randomstring.generate({ length: 16, charset: 'numeric'})),
-        "receiverName": (!isLoan ? yourName : faker.name.findName()),
+        "lenderID": (isLoan ? yourID : randomstring.generate({ length: 16, charset: 'numeric'})),
+        "lenderName": (isLoan ? yourName : faker.name.findName()),
+        "borrowerID": (!isLoan ? yourID : randomstring.generate({ length: 16, charset: 'numeric'})),
+        "borrowerName": (!isLoan ? yourName : faker.name.findName()),
         "amount": utils.randomIntegerBetween(2, 15) * 1000000,
         "status": status[utils.randomIntegerBetween(0, 2)],
         "date": new Date(faker.date.recent()).getTime(),

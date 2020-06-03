@@ -43,7 +43,10 @@ request. A Token can be acquired from the Login view above.
 ### History
 * [Get money receive transaction history of the customer](History/receive.md) `GET /api/history/receive`
 * [Get money transfer transaction history of the customer](History/transfer.md) `GET /api/history/transfer`
-* [Get debt repaying transaction history of the customer](History/debt-repay.md) `GET /api/history/debt-repay`
+* [Get debt repaying transaction history of the customer](History/debt-repay.md) `GET /api/history/debt-repaying`
+
+### Account
+* [Get account information for a customer (aka customer information)](Account/getInfo.md) `GET /api/account`
 
 
 
